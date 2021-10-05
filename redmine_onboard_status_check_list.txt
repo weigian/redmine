@@ -1,0 +1,27 @@
+|item                 |status|date|
+|                     |      | |
+|KPI discussion       |      | |
+|                     |      | |
+|Laptop/PC            |      | |
+|Monitor              |      | |
+|Mouse/Keyboard/Cables|      | |
+|                     |      | |
+|email account        |      | |
+|hpc account          |      | |
+|svn account          |      | |
+|vpn account          |      | |
+|nfs access           |      | |
+|printer access       |      | |
+|                     |      | |
+|vcs                  |      | |
+|verdi                |      | |
+|spyglass             |      | |
+|design compiler      |      | |
+|formality            |      | |
+|                     |      | |
+|vi/emacs/nano        |      | |
+|svn                  |      | |
+|sed                  |      | |
+|awk                  |      | |
+|perl                 |      | |
+|python               |      | |
