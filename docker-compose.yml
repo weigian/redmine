@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+  redmine:
+    image: redmine:5.0.5
+    container_name: redmine
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      # REDMINE_DB_USERNAME defatul to root
+      REDMINE_DB_MYSQL: redmine-mysql
+      REDMINE_DB_PASSWORD: passowrd
+      REDMINE_DB_ENCODING: utf8mb4
+      REDMINE_DB_PORT: 3306
+      TZ: Asia/Taipei  
+    volumes:
+      - ./redmine/files:/usr/src/redmine/files
+      - ./redmine/plugins:/usr/src/redmine/plugins
+      - ./redmine/themes:/usr/src/redmine/public/themes
+      - ./redmine/config/configuration.yml:/usr/src/redmine/config/configuration.yml
+    depends_on:
+      - redmine-mysql
+    networks:
+      - redmine-network
+
+  redmine-mysql:
+    image: mysql:5.7
+    # 讓資料庫支援UTF8，否則redmine無法寫入中文
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    container_name: redmine-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: redmine
+    volumes:
+      - ./mysql/mysql:/var/lib/mysql
+    networks:
+      - redmine-network
+
+networks:
+  redmine-network:
+    external: false
